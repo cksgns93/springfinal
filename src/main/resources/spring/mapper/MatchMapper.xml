@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spo.tis.mapper.MatchMapper">
+
+	<insert id="insertMatching" parameterType="matchadd">
+		insert into
+		matching values(mno_seq.nextval,#{tno},#{mname},
+		#{game},#{away},#{tlevel},#{mcontent},sysdate,#{addr},#{hp1},#{hp2},#{hp3},'test',
+		sysdate)
+	</insert>
+
+	<select id="getAllMatch" resultType="matchadd">
+		select * from matching order
+		by mno desc
+	</select>
+
+	<select id="getMatchinfo" resultType="matchadd"
+		parameterType="string">
+		select * from matching where mno=#{mno}
+	</select>
+
+
+	<!-- <select id="selectTeam" resultType="Team" parameterType="string">
+		select tno from team
+	</select>
+ -->
+	<insert id="applymatch" parameterType="matchadd">
+		insert into member_team values(mttidx_seq.nextval,#{mmno},#{iidx})
+	</insert>
+
+	<select id="getMyMatch" resultType="matchadd"
+		parameterType="int">
+		select * from member_team where tno=#{value}
+	</select>
+
+	<!-- ========================================================= -->
+	<select id="makeMatch" resultType="int" parameterType="string">
+		select idx from member where id=#{id}
+	</select>
+
+	<select id="selectidx" resultType="int" parameterType="string">
+		select tno from team where tname=#{value}
+	</select>
+
+<!-- 	<select id="Teaminfo" resultType="Team" parameterType="string">
+		select * from Team where tking=#{value}
+	</select>
+ -->
+</mapper>

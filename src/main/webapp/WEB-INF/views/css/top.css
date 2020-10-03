@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+        /*회원가입, 로그인*/   
+        #top{        
+            background-color: royalblue;
+            width:100%;
+            height: 40pt;
+        }
+        
+        #topin{
+            float: right;
+            margin-top: 13px;
+            margin-right: 11px;
+        }
+
+        .top{
+            text-decoration: none;
+            color: white;
+        }
+        
+        #top_d{
+        	color: white;
+        }
+
+        /*메인메뉴*/
+        nav{
+            display: flex; /*한 줄*/
+            width: 100%;
+            justify-content: center; /*리스트가 중앙에 위치*/
+            background-color: royalblue;
+            position : relative;
+            z-index: 1;
+        }
+
+        #main-menu, .sub-menu{ /*초기화*/
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #main-menu > li{
+            float:left;
+            background-color: royalblue;
+        }
+
+        #main-menu > li > a{ 
+            display: block;
+            padding: 20px 60px;   /*안쪽 여백*/
+            font-size : 12pt;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            border-right : 1px solid white;
+            color : white;
+        }
+
+        /*서브메뉴*/
+        .sub-menu{
+            position: absolute;
+            background: #182952;
+            /*숨기기*/
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .sub-menu > li{
+            padding: 16px 35px;
+            /* border-bottom : 1px solid white; */
+        }
+
+        .sub-menu > li > a{
+            color: white;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
+        /*부모 요소 마우스 오버시 자식 요소 나타남*/
+        #main-menu > li:hover .sub-menu{
+            opacity : 0.9;
+            visibility: visible;
+        }
+        
+        #main-menu > li:nth-child(1) > a{
+            border-left: 1px solid white;
+        }
+        
+        /*마우스 오버시 메뉴 효과*/
+        #main-menu > li:hover{
+        	/* background: blue;
+        	border : 1px solid white; */
+        }
+        #main-menu > li:hover > a{
+            color : white; 
+        }
+        
+
+        /*매칭메뉴에서 팀 나누기*/
+        #division{
+            border-top: 1px solid white;
+            font-size: 13pt;
+        }
+        
+        /*로고*/
+        #title{ /*글*/
+            font-style: italic;
+            font-family: fantasy;
+            font-size: 60pt;
+            margin-top: 10pt;
+        }
+        /* span{
+            font-size: 70pt;
+        } */
+
+        #logo{  /*사진*/
+            float: left;
+            margin: 10pt 20pt;
+        }

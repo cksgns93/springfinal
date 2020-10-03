@@ -1,0 +1,33 @@
+@charset "UTF-8";
+	/* div{
+		border : 1px solid black;
+	} */
+	
+	#box{
+		/* background : #e7f5fb; */
+		padding: 10px;
+		border-radius : 5px;
+		border : 2px solid lightgray;
+		color: #182952;
+	}
+	
+	.text{
+		color: blue;
+		font-weight : bold;
+	}
+	
+	.text2{
+		font-size: 17px;
+	}
+	
+	#sf{
+		margin-top: 30pt;
+	}
+	
+	button{
+		background: royalblue;
+		color: white;
+		border-radius : 5px;
+		border : 1px solid white;
+		height : 26pt;
+	}

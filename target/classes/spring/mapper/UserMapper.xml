@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spo.tis.mapper.UserMapper">
+	
+	<insert id="createUser" parameterType="User">
+		insert into member 
+		values(member_seq.nextval,#{id},#{pwd},#{name},#{question},#{answer},#{gender},#{birth},
+		#{hp1},#{hp2},#{hp3},#{loc},#{state:NUMERIC},#{mark:VARCHAR})
+	</insert>
+	
+	<select id="findUser" parameterType="User" resultType="User">
+ 		select * from member
+ 		<where>
+ 		<if test="id!=null and id!='' "><!-- 빈문자열로 '비어있지 않다면' 이라는 것 -->
+ 		id=#{id}
+ 		</if>
+ 		<if test="name!=null and name!='' ">
+ 		name=#{name}
+ 		</if>
+ 		</where>
+	</select>
+	
+</mapper>
