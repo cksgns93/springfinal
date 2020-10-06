@@ -66,7 +66,7 @@
             text-align: center;
             text-decoration: none;
             letter-spacing: 0.05em;
-            border-right : 1px solid #182952;;
+            border-right : 1px solid white;
             color : white;
         }
 
@@ -148,29 +148,21 @@
             <ul class="sub-menu">
                 <li><a href="<%=myctx%>/matchBoard">매칭 게시판</a></li>
                 <li><a href="<%=myctx%>/matchAdd">매칭 등록</a></li>
-                <li id="division"><a href="#">-팀</a></li>
+            </ul>
+        </li>
+        <li><a href="<%=myctx%>/matchBoard">팀</a>
+            <ul class="sub-menu">
                 <li><a href="<%=myctx%>/teamBoard">팀 게시판</a></li>
                 <li><a href="<%=myctx%>/teamAdd">팀 만들기</a></li>
             </ul>
         </li>
         <li><a href="#">모임</a>
             <ul class="sub-menu">
-                <li><a href="<%=myctx%>/clubBoard">모임 게시판</a></li>
-                <li><a href="#">모임 만들기</a></li>
+                <li><a href="<%=myctx%>/club/list">모임 게시판</a></li>
+                <li><a href="<%=myctx%>/club/add">모임 만들기</a></li>
             </ul>
         </li>
-        <li><a href="#">커뮤니티&nbsp;</a>
-            <ul class="sub-menu">
-                <li><a href="<%=myctx%>/relay/relayboard.do">구장/체육관 양도</a></li>
-                <li><a href="#">&emsp;&nbsp;공지사항&emsp;</a></li>
-                <li><a href="#">&emsp;&nbsp;고객센터&emsp;</a></li>
-            </ul>
-        </li>
-        <li><a href="#">대회</a>
-            <ul class="sub-menu">
-                <li><a href="#">&nbsp; 대회 &nbsp;일정 </a></li>
-            </ul>
-        </li>
+
         <li><a href="#">마이페이지</a>
         <ul class="sub-menu">
             <li class="ml-4 mr-4">
@@ -179,11 +171,11 @@
 
             <li class="ml-4 mr-4">
             <a href="<%=myctx%>/mypage/mymatch">
-			&emsp;&emsp;My 매칭 &emsp;&emsp;</a></li>
+			&emsp;&emsp;&nbsp;My 매칭 &nbsp;&emsp;&emsp;</a></li>
             
-            <li class="ml-4 mr-4">
+            <%--  <li class="ml-4 mr-4">
             <a href="<%=myctx%>/mypage/myteamselect">
-			&emsp;&emsp;My 팀 &emsp;&emsp;</a></li>
+			&emsp;&emsp;My 팀 &emsp;&emsp;</a></li> --%>
         </ul>
         </li>
     </ul>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spo.tis.mapper.CPictureMapper">
+	<select id="getClubPicture" resultType="CPicture" parameterType="int">
+		select cpimage, cptitle, cpdate, name, id from cpicture cp
+		join member m on m.idx=cp.idx where cno=#{cno} 
+	</select>
+	
+	<insert id="insertPhoto"  parameterType="CPicture">
+		insert into cpicture(cpno, cpimage, cptitle, cno, cpdate, idx) 
+		values(cpicture_seq.nextval, #{cpimage}, #{cptitle}, #{cno}, sysdate, #{idx})
+	</insert>
+	
+	<select id="getMyPicture" resultType="CPicture">
+		select cpno, cpimage, cptitle, cpdate from cpicture where cno=#{cno} and idx=#{idx} 
+	</select>
+	
+	<delete id="deletePhoto" parameterType="int">
+		delete from cpicture where cpno=#{cpno}
+	</delete>
+</mapper>

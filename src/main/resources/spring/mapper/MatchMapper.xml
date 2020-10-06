@@ -8,12 +8,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into
 		matching values(mno_seq.nextval,#{tno},#{mname},
 		#{game},#{away},#{tlevel},#{mcontent},sysdate,#{addr},#{hp1},#{hp2},#{hp3},'test',
-		sysdate)
+		sysdate, #{idx})
 	</insert>
 
-	<select id="getAllMatch" resultType="matchadd">
+	<!-- <select id="getAllMatch" resultType="matchadd">
 		select * from matching order
 		by mno desc
+	</select> -->
+	
+	<!-- 페이징 -->
+	<select id="getTotalCount" resultType="_int">
+		select count(mno) from matching
+	</select>
+	
+	<select id="getAllMatch" resultType="matchadd" parameterType="matchadd">
+		select *
+		from (select ROW_NUMBER () OVER (order by mno desc) rn, 
+		matching.* from matching) where rn between #{start} and #{end} 
 	</select>
 
 	<select id="getMatchinfo" resultType="matchadd"
@@ -26,8 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select tno from team
 	</select>
  -->
-	<insert id="applymatch" parameterType="matchadd">
-		insert into member_team values(mttidx_seq.nextval,#{mmno},#{iidx})
+	<insert id="applymatch" parameterType="Mt">
+		insert into member_team values(mttidx_seq.nextval,#{bidx},#{hmno},#{htno},#{amno},#{atno}, 0)
 	</insert>
 
 	<select id="getMyMatch" resultType="matchadd"
@@ -40,12 +51,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select idx from member where id=#{id}
 	</select>
 
-	<select id="selectidx" resultType="int" parameterType="string">
-		select tno from team where tname=#{value}
+	<select id="selectidx" resultType="Mt" parameterType="int">
+		select mtno, bidx, t.tname, m.game, m.addr from
+		member_team mt join team t
+		on mt.atno=t.tno join matching m
+		on mt.bidx=m.mno where mt.hmno=#{hmno} and mt.state=0
+		order by bidx desc
 	</select>
-
-<!-- 	<select id="Teaminfo" resultType="Team" parameterType="string">
-		select * from Team where tking=#{value}
+	
+	<select id="selectRecord" resultType="Mt" parameterType="int">
+		select bidx, t.tname, m.game, m.addr from
+		member_team mt join team t
+		on mt.atno=t.tno join matching m
+		on mt.bidx=m.mno where (mt.hmno=2 and mt.state=1)
+		or (mt.amno=2 and mt.state=1)
+		order by bidx desc
 	</select>
- -->
+	
+	<update id="updateMtstate" parameterType="int">
+		update member_team set state=1 where mtno=#{mtno}
+	</update>
+	
+	<delete id="deleteMtno" parameterType="Mt">
+		delete member_team where mtno!=#{mtno} and bidx=#{bidx} and state=0
+	</delete>
+ 	
+	<!-- 검색 -->
+	<select id="getFindCount" resultType="int" parameterType="matchadd">
+		select count(mno) from matching 
+		where game like #{selSports}
+		<include refid="search"></include>		
+	</select>
+	
+	<select id="getFindMatch" resultType="matchadd" parameterType="matchadd">
+		select *
+		from (select ROW_NUMBER () OVER (order by mno desc) rn, 
+		matching.* from matching
+		where game like #{selSports}
+		<include refid="search"></include>)
+		where rn between #{start} and #{end} 
+	</select>
+	
+	<sql id="search">
+			<if test="findType == 0"></if>
+			<if test="findType == 1">
+				and away like '%'||#{findKeyword}||'%'
+			</if>
+			<if test="findType == 2">
+				and addr like '%'||#{findKeyword}||'%'
+			</if>
+			<if test="findType == 3">
+				and tlevel like '%'||#{findKeyword}||'%'
+			</if>
+	</sql>
+	
+	<select id="getFindCateCount" resultType="int" parameterType="matchadd">
+		select count(mno) from matching 
+		where game like #{selSports}
+	</select>
+	
+	<select id="getFindMatchCate" resultType="matchadd" parameterType="matchadd">
+		select *
+		from (select ROW_NUMBER () OVER (order by mno desc) rn, 
+		matching.* from matching
+		where game like #{selSports})
+		where rn between #{start} and #{end} 
+	</select>
+	<!-- ====== -->
 </mapper>

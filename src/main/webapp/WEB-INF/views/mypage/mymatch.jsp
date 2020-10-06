@@ -5,45 +5,43 @@
 
 <html>  
 <div class="col-md-12" style="background-color:skyblue">
-	<h1 class="text-center">나의 매칭</h1>
+   <h1 class="text-center">나의 매칭</h1>
 </div>
     <div class="section">
       <div class="container">
         <div class="row">
           <div class="row col-md-8">
- 	<br>
+    <br>
            <jsp:include page="../mypage/calendar.jsp"/>
-          </div>
-          <div class="col-md-4">
+            </div>
+            </div>
+          
+          <div class="row">
+          <div class="col-md-12" style="margin-top:30pt">
             <h2 class="text-center">매칭신청</h2>
             <table class="table">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>상대팀</th>
-                  <th>날짜</th>
-                  <th>수락|거절</th>
+                  <th>매칭글번호</th>
+                  <th>신청팀이름</th>
+                  <th>종목</th>
+                  <th>장소</th>
+                  <th>수락</th>
                 </tr>
               </thead>
               <tbody>
+            <c:forEach var="select" items="${selectidx}">
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>수락|거절</td>
+                  <td></td>
+                  <td>${select.bidx}</td>
+                  <td>${select.tname}</td>
+                  <td>${select.game}</td>
+                  <td>${select.addr}</td>
+                  <td><a href="allowMatch?mtno=${select.mtno}&bidx=${select.bidx}">수락</a></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>수락|거절</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>수락|거절</td>
-                </tr>
+            </c:forEach>
+                
               </tbody>
             </table>
             <ul class="pagination">
@@ -70,7 +68,8 @@
               </li>
             </ul>
           </div>
-        </div>
+      </div>
+      
       </div>
     </div>
     <div class="section">
@@ -84,31 +83,21 @@
             <table class="table text-center table-secondary text-body table-bordered table-borderless table-hover table-sm table-striped">
               <thead>
                 <tr>
-                  <th class="info text-center">번호</th>
+                  <th class="info text-center">매칭글번호</th>
                   <th class="info text-center">대결상대</th>
+                  <th class="info text-center">종목</th>
                   <th class="info text-center">장소</th>
-                  <th class="info text-center">날짜</th>
                 </tr>
               </thead>
               <tbody>
+                <c:forEach var="select" items="${selectRecord}">
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td>${select.bidx}</td>
+                  <td>${select.tname}</td>
+                  <td>${select.game}</td>
+                  <td>${select.addr}</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+               </c:forEach>
               </tbody>
             </table>
           </div>

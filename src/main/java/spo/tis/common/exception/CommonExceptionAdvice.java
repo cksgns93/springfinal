@@ -9,7 +9,6 @@ import spo.tis.domain.NotUserException;
  * 컨트롤러에서 발생하는 예외를 전문적으로 처리하는 클래스임을 명시하는 것이다.
  * */
 @ControllerAdvice
-//@Log4j
 public class CommonExceptionAdvice {//Advice는 공통관심사
 	
 	@ExceptionHandler(NotUserException.class)

@@ -97,9 +97,11 @@
           <div class="col-md-12 text-center">
             <br>
             <br>
-            <form action="mtstart.do" method="post">
-            	<input type="hidden" id="mno" name="mno" value="${vo.mno}"> 
-            	<input type="hidden" id="lidx" name="lidx" value="${loginUser.idx}">
+            <form action="mtstart" method="post">
+            	<!-- 글쓴 사람의 매치글번호 -->
+            	<input type="hidden" id="bidx" name="bidx" value="${vo.mno}"> 
+            	<!-- 매치 신청하는 사람의 회원번호 -->
+            	<input type="hidden" id="amno" name="amno" value="${loginUser.idx}">
             	<button class="btn btn-lg btn-primary" >매치 신청</button>
             </form>
           </div>

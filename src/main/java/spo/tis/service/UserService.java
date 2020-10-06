@@ -14,5 +14,5 @@ public interface UserService {
 
 	UserVO findUser(UserVO user);
 	
-
+	int updateUser(UserVO user);
 }

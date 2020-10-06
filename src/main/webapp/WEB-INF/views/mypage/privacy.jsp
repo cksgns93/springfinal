@@ -14,10 +14,10 @@
         <div class="row">
           <div class="col-md-12">
             
-            <form role="form" name="f" action="privacyedit.do" method="post">
+            <form role="form" name="f" action="privacyAdd" method="post">
               <div class="form-group">
                 <label class="control-label" for="exampleInputEmail1">ID</label>
-                <input class="form-control" name="userid" id="userid" value="${loginUser.userid}"
+                <input class="form-control" name="userid" id="userid" value="${loginUser.id}"
                 type="text"  readonly >
               </div>
               <div class="form-group">
@@ -80,11 +80,61 @@
 
 <script>
 	function check(){
+		if(!f.userid.value){
+			alert("아이디를 입력하세요");
+			f.userid.focus();
+			return;
+		}
+		if(!f.pwd.value){
+			alert("비밀번호를 입력하세요");
+			f.pwd.focus();
+			return;
+		}
 		if(!f.pwdc.value||f.pwdc.value!=f.pwd.value){
 			alert("위 비밀번호와 일치 하지않습니다.\r\n다시 시도해 주시기 바랍니다.");
 			f.pwd.focus();
 			f.pwd.select();
 			f.pwdc.value="";
+			return;
+		}
+		if(!f.name.value){
+			alert("이름을 입력하세요");
+			f.name.focus();
+			return;
+		}
+		if(!f.name.value){
+			alert("이름을 입력하세요");
+			f.name.focus();
+			return;
+		}
+		if(!f.question.value){
+			alert("질문 적으세요");
+			f.question.focus();
+			return;
+		}
+		if(!f.answer.value){
+			alert("질문에 대한 답변 적으세요");
+			f.answer.focus();
+			return;
+		}
+		if(!(f.hp1.value)){
+			alert("폰번호를 제대로 적으시요");
+			f.hp1.focus();
+			return;
+		}
+		if(!(f.hp2.value)){
+			alert("폰번호를 제대로 적으시요");
+			f.hp2.focus();
+			return;
+		}
+		if(!(f.hp3.value)){
+			alert("폰번호를 제대로 적으시요");
+			f.hp3.focus();
+			return;
+		}
+		if(!f.loc.value){
+			alert("활동지역을 적으세오");
+			f.loc.focus();
 			return;
 		}
 		f.submit();

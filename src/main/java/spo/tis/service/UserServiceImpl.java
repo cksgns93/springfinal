@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public int updateUser(UserVO user) {
+		return userMapper.updateUser(user);
+	}
+	
+	@Override
 	public UserVO findUser(UserVO user) {
 		
 		return this.userMapper.findUser(user);

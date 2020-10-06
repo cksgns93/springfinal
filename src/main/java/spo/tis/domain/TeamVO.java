@@ -14,6 +14,10 @@ public class TeamVO {
 	private int thp1;
 	private int thp2;
 	private int thp3;
+	private int idx;
+	
+	private int start;
+	private int end;
 	
 	public TeamVO() {
 		
@@ -118,7 +122,24 @@ public class TeamVO {
 	public void setThp3(int thp3) {
 		this.thp3 = thp3;
 	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	
 	
-
 }

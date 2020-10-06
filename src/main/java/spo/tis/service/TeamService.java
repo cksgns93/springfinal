@@ -17,4 +17,10 @@ public interface TeamService {
 
 	TeamVO selectByKname(String name);
 
+	int getTotalCount();
+
+	List<TeamVO> listTeam2(TeamVO tvo);
+
+	TeamVO Teaminfo2(int amno);
+
 }

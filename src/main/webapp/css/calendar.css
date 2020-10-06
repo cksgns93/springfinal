@@ -1,0 +1,24 @@
+@charset "UTF-8"; 
+        div#cal{
+            margin-top: 50px;
+        }
+       table{
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        div#cal table>tr>th, td{
+            font-size: 0.8em;
+            height: 45px;
+            text-align: center;
+        }
+        div#cal th{
+            background-color: #6ea5d4e3;
+            color:rgb(0, 0, 0);
+        }
+        .sun{
+            color:red;
+        }
+        .sat{
+            color:blue;
+        }

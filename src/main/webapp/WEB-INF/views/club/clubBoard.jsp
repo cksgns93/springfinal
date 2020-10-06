@@ -33,7 +33,7 @@
 	}
 	
 	#clubmenu > a{
-		width: 25%;
+		width: 33.33%;
 		border: 1px solid lightgray;
 		padding: 10pt;
 		text-decoration: none;
@@ -43,7 +43,7 @@
 		border-top-left-radius: 10px 
 	}
 	
-	#clubmenu > a:nth-child(4){
+	#clubmenu > a:nth-child(3){
 		border-top-right-radius: 10px 
 	}	
 
@@ -87,19 +87,18 @@
 
 <div id="cbmenu" style="float:left; margin-top:30pt">
   <ul>
-  <li><a href="boardAdd.do?cno=${cno}">
+  <li><a href="boardAdd?cno=${cno}">
   	     <img src="../clubboardimage/logo2.png" width="30px"> 게시글 등록</a></li>
-  <li><a href="boardMy.do?cno=${cno}">
+  <li><a href="boardMy?cno=${cno}">
   		 <img src="../clubboardimage/logo2.png" width="30px"> 나의 게시글</a></li>
   </ul>
 </div>
 
 <div id="t">
 <div id="clubmenu">
-    <a href="view.do?cno=${cno}">모임 정보</a>
+    <a href="view?cno=${cno}">모임 정보</a>
     <a href="#">게시판</a>
-    <a href="photo.do?cno=${cno}">사진첩</a>
-    <a href="#">채   팅</a>
+    <a href="photo?cno=${cno}">사진첩</a>
 </div>
 <div id="m">
 	<c:if test="${clubView ne null and not empty clubView}">
@@ -128,7 +127,7 @@
 		<tr>
 			
 			<td>
-				<a href="boardView.do?cbno=${cb.cbno}&cno=${cno}"
+				<a href="boardView?cbno=${cb.cbno}&cno=${cno}"
 					style="color:black;"><h5>${cb.cbtitle}</h5></a>
 			</td>
 			<td><h5>${cb.name}</h5></td>
@@ -147,21 +146,20 @@
 		<ul class="pagination justfify-content-center">
 		<c:if test="${prevBlock>0}"> <!-- 이전 5개 -->
 			<li class="page-item">
-				<a class="page-link" href="board.do?cpage=${prevBlock}&cno=${cno}">이전 ${pagingBlock}개</a>
+				<a class="page-link" href="board?cpage=${prevBlock}&cno=${cno}">이전 ${pagingBlock}개</a>
 			</li>
 		</c:if>
 			
 		<c:forEach var="i" begin="${prevBlock+1}" end="${nextBlock-1}" step="1">
 			<c:if test="${i<=pageCount}">
 			<li class="page-item <c:if test="${cpage==i}">active</c:if>" >
-				<a class="page-link" href="board.do?cpage=${i}&cno=${cno}">${i}</a>
+				<a class="page-link" href="board?cpage=${i}&cno=${cno}">${i}</a>
 			</li>	
 			</c:if>		
 		</c:forEach>
 			
 		<c:if test="${nextBlock<=pageCount}"> <!-- 이후 5개 -->
 			<li class="page-item">
-				<a class="page-link" href="board.do?cpage=${nextBlock}&cno=${cno}">이후 ${pagingBlock}개</a>
 			</li>
 		</c:if>
 		</ul>

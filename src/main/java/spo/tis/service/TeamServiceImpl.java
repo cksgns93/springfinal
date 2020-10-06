@@ -33,4 +33,20 @@ public class TeamServiceImpl implements TeamService {
    public TeamVO Teaminfo(String user) {
       return this.TeamMapper.Teaminfo(user);
    }
+
+	@Override
+	public int getTotalCount() {
+		 return this.TeamMapper.getTotalCount();
+	}
+	
+	@Override
+	public List<TeamVO> listTeam2(TeamVO tvo) {
+		 return this.TeamMapper.listTeam2(tvo);
+	}
+
+	@Override
+	public TeamVO Teaminfo2(int amno) {
+
+		return this.TeamMapper.Teaminfo2(amno);
+	}
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spo.tis.mapper.CBoardMapper">
+	<!-- 모임 상세 게시판 목록 가져오기 -->
+	<select id="getClubBoardList" resultType="CBoard" parameterType="int">
+		select cbno, cbimage, cbtitle, cbupdate, name, id, cbreadnum from cboard cb
+		join member m on m.idx=cb.idx where cno=#{cno}
+		order by cbno desc
+	</select>
+	
+	<!-- 모임 상세 게시판 총 게시글 수-->
+	<select id="getCbdTotalCount" resultType="int" parameterType="int">
+		select count(cbno) from cboard where cno=#{cno}
+	</select>
+	
+	<!-- 해당 페이지의 모임 상세 게시판 목록 가져오기 -->
+	<select id="getCbdList" resultType="CBoard" parameterType="CBoard">
+		select cbno, cbimage, cbtitle, cbupdate, name, id, cbreadnum
+		from (select ROW_NUMBER () OVER (order by cbno desc) rn, 
+		cb.*, m.* from cboard cb join member m on m.idx=cb.idx where cno=#{cno}) 
+		where rn between #{start} and #{end}
+	</select>
+	
+	
+	<!-- 게시글 번호로 게시글 상세정보 가져오기 -->
+	<select id="getBoardDetail" resultType="CBoard" parameterType="int">
+		select cb.*, id, name from cboard cb
+		join member m on m.idx=cb.idx where cbno=#{cbno}
+	</select>
+	
+	<!-- 게시글 등록하기 -->
+	<insert id="insertBoard" parameterType="CBoard">
+		insert into cboard(cbno, cno, idx, cbtitle, cbcontent)
+		values(cboard_seq.nextval, #{cno}, #{idx}, #{cbtitle}, #{cbcontent})
+	</insert>
+	
+	<!-- 나의 게시글 목록 가져오기 -->	
+	<select id="getMyBoard" resultType="CBoard" parameterType="CBoard">
+		select cbno, cbimage, cbtitle, cbupdate, name, id, cbreadnum from cboard cb
+		join member m on m.idx=cb.idx where cno=#{cno} and cb.idx=#{idx}
+		order by cbno desc
+	</select>
+	
+	<!-- 나의 게시글 삭제하기 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete from cboard where cbno=#{cbno}
+	</delete>
+	
+	<!-- 나의 게시글 수정하기 -->
+	<update id="updateBoard" parameterType="CBoard">
+	 	update cboard set cbtitle=#{cbtitle}, cbcontent=#{cbcontent} where cbno=#{cbno}
+	</update>
+	
+	<!-- 조회수 중가시키기 -->
+	<update id="udpateCbReadnum" parameterType="int">
+		update cboard set cbreadnum = cbreadnum+1 where cbno=#{cbno}
+	</update>
+</mapper>

@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </selectKey>
       insert into team values(#{tno},#{tname},
       #{tking},#{tsports},1,29,#{rank},'test',#{tplace},
-      #{thp1},#{thp2},#{thp3})
+      #{thp1},#{thp2},#{thp3}, #{idx})
    </insert>
    <select id="getAllTeam" resultType="Team">
       select * from team
@@ -17,7 +17,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="selectByKname" parameterType="string" resultType="Team">
       select * from team where tking=#{value}
       </select>
-      <select id="Teaminfo" resultType="Team" parameterType="string">
+   <select id="Teaminfo" resultType="Team" parameterType="string">
       select * from Team where tking=#{value}
    </select>
+   <select id="Teaminfo2" resultType="Team" parameterType="int">
+      select * from Team where idx=#{idx}
+   </select>
+   	
+   	<select id="getTotalCount" resultType="_int">
+		select count(tno) from team 
+	</select>
+	<select id="listTeam2" parameterType="Team" resultType="Team">
+		select *
+		from (select ROW_NUMBER () OVER (order by tno desc) rn, 
+		team.* from team) where rn between #{start} and #{end} 
+	</select> 
+	
+	
 </mapper>

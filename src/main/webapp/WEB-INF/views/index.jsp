@@ -21,7 +21,7 @@ $(function(){
 	$('.table').stupidtable();
 })
 </script>
-<div class="container">
+
     <div id="fullcarousel-example" data-interval="false" class="carousel slide"
     data-ride="carousel">
       <div class="carousel-inner">
@@ -50,7 +50,7 @@ $(function(){
       <a class="left carousel-control" href="#fullcarousel-example" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
       <a class="right carousel-control" href="#fullcarousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
     </div><!-- carousel 끝 -->
-   </div>
+    
     <div class="section">
         <div class="row">
           <div class="col-md-4 p-2">
@@ -67,13 +67,13 @@ $(function(){
               </thead>
 
               <tbody>
-                <%-- <c:forEach var="nt" items="${notice}"> --%>
+                
 	                <tr>
 	                  <td>1</td>
-	                  <td><a href="noticeboard.do">2</a></td>
-	                  <td>3</td>
+	                  <td><a href="noticeboard.do"><span class="badge">필독</span>매칭 글 올리기전에 확인하세요</a></td>
+	                  <td>2020-10-06</td>
 	                </tr>
-                <%-- </c:forEach> --%>
+                
                 
               </tbody>
               
@@ -98,19 +98,19 @@ $(function(){
                 <tr>
                   <td>1</td>
                   <td>농구</td>
-                  <td>집가서</td>
+                  <td>길거리 농구 한판</td>
                   <td>20-08-14</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>축구</td>
-                  <td>하고싶다</td>
+                  <td>10/1일 서경 풋살장</td>
                   <td>20-08-14</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>야구</td>
-                  <td>^^</td>
+                  <td>글러브만 들고오세요</td>
                   <td>20-08-14</td>
                 </tr>
               </tbody>
@@ -133,20 +133,20 @@ $(function(){
                 <tr>
                   <td>1</td>
                   <td>당구</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td>200이상만</td>
+                  <td>2020-09-20</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>볼링</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td>즐깁시다</td>
+                  <td>2020-09-28</td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>수영</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
+                  <td>산삼체육관</td>
+                  <td>2020-10-01</td>
                 </tr>
               </tbody>
             </table>

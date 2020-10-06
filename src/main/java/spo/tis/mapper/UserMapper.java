@@ -8,4 +8,6 @@ public interface UserMapper {
 	Integer idCheck(String userid);
 
 	UserVO findUser(UserVO user);
+
+	int updateUser(UserVO user);
 }

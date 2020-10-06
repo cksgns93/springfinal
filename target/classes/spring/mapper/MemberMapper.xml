@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spo.tis.mapper.MemberMapper">
+	<select id="getJoinInfo" resultType="Member" parameterType="int">
+		select m.idx, name, id, gender, mark, grade from member m
+		join mc on mc.idx=m.idx where cno=#{cno} and mcstate=1
+		order by grade
+	</select>
+</mapper>

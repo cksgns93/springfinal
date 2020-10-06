@@ -22,4 +22,10 @@
  		</where>
 	</select>
 	
+	<update id="updateUser" parameterType="User">
+		update member
+		set name=#{name}, pwd=#{pwd}, question=#{question},
+		answer=#{answer}, hp1=#{hp1}, hp2=#{hp2}, hp3=#{hp3},
+		loc=#{loc}, mark=#{mark} where idx=#{idx}
+	</update>
 </mapper>

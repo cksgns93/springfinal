@@ -81,23 +81,22 @@
 	      </div>
 <script>
 	function check(){
-		/*if(!f.id.value){
-			alert("아이디 입력 안하나?");
+		if(!f.id.value){
+			alert("아이디를 입력하세요");
 			f.userid.focus;
 			return;
 		}
 		if(!f.pwd.value){
-			alert("비밀번호는 조상님이 입력하나?");
+			alert("비밀번호를 입력하세요");
 			f.password.focus;
 			return;
 		}
 		
-		f.submit();*/
+		f.submit();
 		
 			var id = $('#id').val();
 			var pwd = $('#pwd').val();
 			var saveId = $('#saveId').is(':checked');
-			alert(id+'/'+pwd+'/'+saveId)
 			f.submit();
 	
 	}
